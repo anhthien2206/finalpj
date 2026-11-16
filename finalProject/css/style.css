@@ -1,35 +1,111 @@
-html{
+html {
     scroll-behavior: smooth;
 }
+
 body {
     background-color: #dedede;
     padding: 5px;
     margin: 15px;
     font-size: 25px;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
     text-align: center;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.95em;
 }
 
-h2{
-    text-align:center;
-  }
+h2 {
+    text-align: center;
+}
 
-li{
+li {
     margin-top: 20px;
 }
 
-img{
+/* Giao diện mặc định (Mobile-first): 1 cột */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+figure {
+    margin: 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 35px;
+    text-align: center;
+}
+
+img {
     border: 5px solid blue;
     border-radius: 35px;
     width: 100%;
-  }
+    box-sizing: border-box;
+}
 
-.label{
+figcaption {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 8px;
+}
+
+/* =========================================
+   TRUY VẤN 1: TABLET (Từ 772px trở lên)
+   ========================================= */
+@media screen and (min-width: 772px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    figure, img {
+        border-radius: 50%;
+    }
+
+    figure:last-child {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* =========================================
+   TRUY VẤN 2: DESKTOP (Từ 992px trở lên)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    figure, img {
+        border-radius: 0;
+    }
+
+    figure:last-child {
+        grid-column: auto;
+    }
+
+    figure:nth-child(3n) {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* =========================================
+   TRUY VẤN 3: GIẢM CHUYỂN ĐỘNG
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* =========================================
+   TRUY VẤN 4: CHẾ ĐỘ NỀN TỐI (DARK MODE)
+   ========================================= */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #1f1f1f;
+        color: #ffeb3b;
+        border: 2px solid #000000;
+    }
+
+    img {
+        border-color: #000000;
+    }
 }
